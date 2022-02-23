@@ -1,25 +1,33 @@
-function ReportCard() {
+import { useRef, useState } from "react";
+import { GamePhases } from "./utils/GamePhases";
+import { getARandomizedAlphabet } from "./utils/NatoAlphabet";
+
+function ReportCard({ score }) {
+  const { incorrectLetters, setIncorrectLetters } = useState(null);
   return (
     <div>
-      <p>Report of everything</p>
+      <p>Score percentage: {score} divided by length of the alphabet</p>
+      <p>All the words that you got wrong are {incorrectLetters}</p>
       <button type="submit">Finish</button>
     </div>
   );
 }
 
-function Result() {
+function Result({ letter, userInput }) {
   return (
     <div>
-      <p>user input === answer</p>
+      <p>
+        {userInput} === telephony of current letter: {letter}
+      </p>
       <button type="submit">Next</button>
     </div>
   );
 }
 
-function Answer() {
+function Answer({ userInput }) {
   return (
     <div>
-      <input type="text" placeholder="User is typing..." />
+      <input type="text" value={userInput} />
       <button type="submit">Submit</button>
     </div>
   );
@@ -29,14 +37,19 @@ function Question({ letter }) {
   return <p>What is the telephony of {letter}</p>;
 }
 
-const mockLetter = "j";
+function Quizzer({ gamePhase }) {
+  const randomizedAlphabet = useRef(getARandomizedAlphabet());
+  const [letter, setLetter] = useState(randomizedAlphabet.current.pop());
+  const [userInput, setUserInput] = useState("placeholder user input");
 
-function Quizzer() {
   return (
     <section>
-      <Question letter={mockLetter} />
-      <Answer />
-      {/*<Result />*/}
+      <Question letter={letter} />
+      {gamePhase === GamePhases.ANSWER ? (
+        <Answer userInput={userInput} />
+      ) : (
+        <Result letter={letter} userInput={userInput} />
+      )}
     </section>
   );
 }
@@ -45,14 +58,19 @@ function Scoreboard({ score }) {
   return <section>The score is: {score}</section>;
 }
 
-const mockScore = "3 out 26";
-
 function NatoGame() {
+  const [score, setScore] = useState(0);
+  // TODO: Use enum of game phases
+  const [gamePhase, setGamePhase] = useState(GamePhases.FINAL_RESULT);
+
   return (
     <form>
-      <Scoreboard score={mockScore} />
-      {/*<Quizzer />*/}
-      <ReportCard />
+      <Scoreboard score={score} />
+      {gamePhase === GamePhases.FINAL_RESULT ? (
+        <ReportCard />
+      ) : (
+        <Quizzer gamePhase={gamePhase} />
+      )}
     </form>
   );
 }
