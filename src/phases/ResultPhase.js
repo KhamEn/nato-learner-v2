@@ -2,13 +2,15 @@ import Question from "./Question";
 import { getTelephony } from "../utils/NatoAlphabet";
 import Scoreboard from "./Scoreboard";
 
-function ResultPhase({ score, letter, userInput, onClick }) {
+function ResultPhase({ score, letter, userAnswer, onClick }) {
   return (
     <>
       <Scoreboard score={score} />
       <Question letter={letter} />
-      <p>user input is correct/incorrect</p>
-      {/*<p>{userInput === getTelephony(letter)}</p>*/}
+      <div>
+        <p>You said: "{userAnswer}"</p>
+        <p>{userAnswer === getTelephony(letter) ? "Correct." : "Incorrect."}</p>
+      </div>
       <button onClick={onClick}>Next Question</button>
     </>
   );

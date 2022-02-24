@@ -8,6 +8,7 @@ import QuestionAnswerPhase from "./phases/QuestionAnswerPhase";
 function NatoGame() {
   const randomizedAlphabet = useRef(getARandomizedAlphabet());
   const [letter, setLetter] = useState(() => randomizedAlphabet.current.pop());
+  const [userAnswer, setUserAnswer] = useState("");
   const [score, setScore] = useState(0);
   const [gamePhase, setGamePhase] = useState(GamePhases.QUESTION_ANSWER);
 
@@ -45,6 +46,7 @@ function NatoGame() {
           <ResultPhase
             score={score}
             letter={letter}
+            userAnswer={userAnswer}
             onClick={changeGamePhase}
           />
         );
@@ -53,7 +55,8 @@ function NatoGame() {
           <QuestionAnswerPhase
             score={score}
             letter={letter}
-            onClick={changeGamePhase}
+            changeGamePhase={changeGamePhase}
+            submitAnswer={setUserAnswer}
           />
         );
       default:
