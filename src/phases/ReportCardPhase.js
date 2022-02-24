@@ -1,10 +1,12 @@
 import Scoreboard from "./Scoreboard";
 
-function ReportCardPhase({ score, onClick }) {
+function ReportCardPhase({ userPoints, maxPoints, onClick }) {
   return (
     <div>
-      <Scoreboard score={score} />
-      <p>Score percentage: {score} divided by length of the alphabet</p>
+      <Scoreboard score={userPoints} />
+      <p>
+        Score: {userPoints} / {maxPoints}
+      </p>
       <p>All the words that you got wrong are (incorrect letters)</p>
       <button onClick={onClick}>New Quiz</button>
     </div>
