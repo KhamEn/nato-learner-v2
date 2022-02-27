@@ -1,5 +1,7 @@
+import styles from "./Phases.module.css";
+
 function Question({ letter }) {
-  return <p>What is the telephony of {letter}</p>;
+  return <p className={styles.heroText}>{letter}</p>;
 }
 
 export default Question;

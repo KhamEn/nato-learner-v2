@@ -8,6 +8,8 @@ import {
 import ReportCardPhase from "./phases/ReportCardPhase";
 import ResultPhase from "./phases/ResultPhase";
 import QuestionAnswerPhase from "./phases/QuestionAnswerPhase";
+import "./reset.css";
+import "./app.css";
 
 function NatoGame() {
   const randomizedAlphabet = useRef(getARandomizedAlphabet());
@@ -89,7 +91,7 @@ function NatoGame() {
     }
   }
 
-  return <>{getCurrentPhaseComponents()}</>;
+  return <article className="container">{getCurrentPhaseComponents()}</article>;
 }
 
 function App() {

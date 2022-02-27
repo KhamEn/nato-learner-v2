@@ -1,14 +1,18 @@
 import Scoreboard from "./Scoreboard";
+import styles from "./Phases.module.css";
 
 function ReportCardPhase({ userPoints, maxPoints, onClick }) {
   return (
-    <div>
+    <div className={`${styles.formContainer} ${styles.elevated}`}>
       <Scoreboard score={userPoints} />
-      <p>
-        Score: {userPoints} / {maxPoints}
+      <p className={styles.heroText}>
+        {(userPoints / maxPoints) * 100}%{/*{userPoints} / {maxPoints}*/}
       </p>
-      <p>All the words that you got wrong are (incorrect letters)</p>
-      <button onClick={onClick}>New Quiz</button>
+      <div className={styles.UserSectionContainer}>
+        <p>All the letters that you got wrong are (incorrect letters)</p>
+        <p>All the letters that you got wrong are (incorrect letters)</p>
+        <button onClick={onClick}>New Quiz</button>
+      </div>
     </div>
   );
 }

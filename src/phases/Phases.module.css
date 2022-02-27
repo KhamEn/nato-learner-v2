@@ -1,0 +1,62 @@
+@value textColor, backgroundColor, brandColor, formControlBGColor from "../app.css";
+
+.formContainer {
+  width: 70%;
+  max-width: 1150px;
+
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+}
+
+.elevated {
+  box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.5);
+}
+
+.UserSectionContainer {
+}
+
+.UserSectionContainer :nth-child(2) {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+input {
+  width: 100%;
+
+  font-size: inherit;
+  color: brandColor;
+
+  background-color: formControlBGColor;
+  border: none;
+  border-bottom: textColor 2px solid;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: brandColor 2px solid;
+}
+
+button {
+  display: block;
+  width: 100%;
+  height: 2rem;
+
+  font-size: inherit;
+  color: inherit;
+
+  background-color: formControlBGColor;
+  border: none;
+  border-radius: 15px;
+}
+
+button:hover {
+  color: formControlBGColor;
+
+  background-color: brandColor;
+}
+
+.heroText {
+  font-size: 20rem;
+  font-weight: bold;
+}

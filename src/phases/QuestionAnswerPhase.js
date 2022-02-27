@@ -1,6 +1,7 @@
+import { useState } from "react";
 import Scoreboard from "./Scoreboard";
 import Question from "./Question";
-import { useState } from "react";
+import styles from "./Phases.module.css";
 
 function QuestionAnswerPhase({ score, letter, changeGamePhase, submitAnswer }) {
   const [textInput, setTextInput] = useState("");
@@ -12,15 +13,19 @@ function QuestionAnswerPhase({ score, letter, changeGamePhase, submitAnswer }) {
   }
 
   return (
-    <form>
+    <form className={`${styles.formContainer} ${styles.elevated}`}>
       <Scoreboard score={score} />
       <Question letter={letter} />
-      <input
-        type="text"
-        value={textInput}
-        onChange={(event) => setTextInput(event.target.value)}
-      />
-      <button onClick={handleClick}>Check Answer</button>;
+      <section className={styles.UserSectionContainer}>
+        <p>Type in the telephony</p>
+        <input
+          id="answer"
+          type="text"
+          value={textInput}
+          onChange={(e) => setTextInput(e.target.value)}
+        />
+        <button onClick={handleClick}>Check Answer</button>
+      </section>
     </form>
   );
 }

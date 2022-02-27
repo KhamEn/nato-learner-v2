@@ -1,0 +1,20 @@
+@value textColor: black;
+@value backgroundColor: whitesmoke;
+@value brandColor: seagreen;
+@value formControlBGColor: white;
+
+html,
+body {
+  font-family: "Manrope", sans-serif;
+  font-size: 22px;
+  color: black;
+
+  background-color: whitesmoke;
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  height: 85vh;
+  width: 100vw;
+}
