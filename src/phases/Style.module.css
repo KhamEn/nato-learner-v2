@@ -1,7 +1,7 @@
 @value textColor, backgroundColor, brandColor, formControlBGColor from "../app.css";
 
 .formContainer {
-  width: 70%;
+  width: 80%;
   max-width: 1150px;
 
   text-align: center;
@@ -59,16 +59,29 @@ button:hover {
 }
 
 .heroText {
-  font-size: 20rem;
+  font-size: 15rem;
   font-weight: bold;
 }
 
 .Scoreboard {
+  /*display: flex;*/
+  /*flex-wrap: wrap;*/
+  /*justify-content: space-between;*/
   display: grid;
-  grid-template-columns: repeat(13, 1fr);
+  grid-template-columns: repeat(9, 1fr);
   justify-items: center;
 
   padding-bottom: 10px;
   border-bottom: 1px dashed lightgray;
-  /*background-color: floralwhite;*/
+}
+
+/* I chose 520px from manually checking how the scoreboard looks in different sizes */
+@media (min-width: 520px) {
+  .heroText {
+    font-size: 20rem;
+  }
+
+  .Scoreboard {
+    grid-template-columns: repeat(13, 1fr);
+  }
 }
