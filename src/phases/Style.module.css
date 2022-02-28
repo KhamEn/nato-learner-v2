@@ -4,6 +4,8 @@
   width: 70%;
   max-width: 1150px;
 
+  text-align: center;
+
   padding: 10px;
   border: none;
   border-radius: 15px;
@@ -59,4 +61,14 @@ button:hover {
 .heroText {
   font-size: 20rem;
   font-weight: bold;
+}
+
+.Scoreboard {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  justify-items: center;
+
+  padding-bottom: 10px;
+  border-bottom: 1px dashed lightgray;
+  /*background-color: floralwhite;*/
 }

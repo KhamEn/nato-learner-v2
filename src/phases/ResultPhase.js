@@ -1,7 +1,7 @@
 import Scoreboard from "./Scoreboard";
 import Question from "./Question";
 import { getTelephony } from "../utils/NatoAlphabet";
-import styles from "./Phases.module.css";
+import styles from "./Style.module.css";
 
 function ResultPhase({ score, letter, userAnswer, onClick }) {
   return (

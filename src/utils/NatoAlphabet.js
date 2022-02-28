@@ -49,8 +49,9 @@ const mockAlphabet = new Map([
   ["E", "Echo"],
 ]);
 
-function getARandomizedAlphabet() {
-  let randomizedAlphabet = Array.from(mockAlphabet.keys());
+function getRandomizedAlphabet() {
+  // let randomizedAlphabet = Array.from(mockAlphabet.keys());
+  let randomizedAlphabet = Array.from(getTheAlphabet());
   shuffleArray(randomizedAlphabet);
   return randomizedAlphabet;
 }
@@ -63,9 +64,4 @@ function getAlphabetSize() {
   return NATO_SPELLING_ALPHABET.size;
 }
 
-export {
-  getTheAlphabet,
-  getARandomizedAlphabet,
-  getTelephony,
-  getAlphabetSize,
-};
+export { getRandomizedAlphabet, getTelephony, getAlphabetSize };

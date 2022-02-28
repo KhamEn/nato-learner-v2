@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import GamePhases from "./utils/GamePhases";
+import ResultIcons from "./utils/ResultIcons";
 import {
   getAlphabetSize,
-  getARandomizedAlphabet,
+  getRandomizedAlphabet,
   getTelephony,
 } from "./utils/NatoAlphabet";
 import ReportCardPhase from "./phases/ReportCardPhase";
@@ -12,28 +13,47 @@ import "./reset.css";
 import "./app.css";
 
 function NatoGame() {
-  const randomizedAlphabet = useRef(getARandomizedAlphabet());
-  const [letter, setLetter] = useState(() => randomizedAlphabet.current.pop());
-  const [points, setPoints] = useState(0);
-  const [userAnswer, setUserAnswer] = useState("");
   const [gamePhase, setGamePhase] = useState(GamePhases.QUESTION_ANSWER);
+  const [visualScore, setVisualScore] = useState(null);
 
-  /**
-     Add a point to the points if the user answer the question correctly.
-     useEffect() because states are not updated immediately,
-     if the code is in changeGamePhase() function, userAnswer state is not up to date.
-     */
+  const randomizedAlphabet = useRef(getRandomizedAlphabet());
+  const alphabetIndex = useRef(0);
+  const userAnswer = useRef("");
+  const userPoints = useRef(0);
+
+  // Initialize the visual score board
   useEffect(() => {
-    if (userAnswer === getTelephony(letter)) {
-      setPoints(points + 1);
-    }
-  }, [userAnswer]);
+    const newScore = new Array(randomizedAlphabet.current.length).fill(
+      ResultIcons.UNKNOWN
+    );
+    newScore[0] = ResultIcons.ACTIVE;
+    setVisualScore(newScore);
+  }, []);
 
   //  userAnswer state is not set here because it is always set to empty string by the QuestionAnswerPhase component
-  function resetGameData() {
-    randomizedAlphabet.current = getARandomizedAlphabet();
-    setLetter(randomizedAlphabet.current.pop());
-    setPoints(0);
+  function setupNewGame() {
+    randomizedAlphabet.current = getRandomizedAlphabet();
+    alphabetIndex.current = 0;
+    const newScore = new Array(randomizedAlphabet.current.length).fill(
+      ResultIcons.UNKNOWN
+    );
+    newScore[0] = ResultIcons.ACTIVE;
+    setVisualScore(newScore);
+    userPoints.current = 0;
+  }
+
+  function submitUserAnswer(answer) {
+    userAnswer.current = answer;
+    let currentScore = visualScore;
+    let currentLetter = randomizedAlphabet.current[alphabetIndex.current];
+    if (answer === getTelephony(currentLetter)) {
+      userPoints.current = userPoints.current + 1;
+      currentScore[alphabetIndex.current] = ResultIcons.CORRECT;
+    } else {
+      currentScore[alphabetIndex.current] = ResultIcons.INCORRECT;
+    }
+    setVisualScore(currentScore);
+    changeGamePhase();
   }
 
   function changeGamePhase() {
@@ -42,15 +62,18 @@ function NatoGame() {
         setGamePhase(GamePhases.RESULT);
         break;
       case GamePhases.RESULT:
-        if (randomizedAlphabet.current.length === 0) {
+        if (alphabetIndex.current + 1 >= randomizedAlphabet.current.length) {
           setGamePhase(GamePhases.REPORT_CARD);
         } else {
-          setLetter(randomizedAlphabet.current.pop());
+          alphabetIndex.current = alphabetIndex.current + 1;
+          let currentScore = [...visualScore];
+          currentScore[alphabetIndex.current] = ResultIcons.ACTIVE;
+          setVisualScore(currentScore);
           setGamePhase(GamePhases.QUESTION_ANSWER);
         }
         break;
       case GamePhases.REPORT_CARD:
-        resetGameData();
+        setupNewGame();
         setGamePhase(GamePhases.QUESTION_ANSWER);
         break;
       default:
@@ -63,25 +86,24 @@ function NatoGame() {
       case GamePhases.QUESTION_ANSWER:
         return (
           <QuestionAnswerPhase
-            score={points}
-            letter={letter}
-            changeGamePhase={changeGamePhase}
-            submitAnswer={setUserAnswer}
+            score={visualScore}
+            letter={randomizedAlphabet.current[alphabetIndex.current]}
+            submitAnswer={submitUserAnswer}
           />
         );
       case GamePhases.RESULT:
         return (
           <ResultPhase
-            score={points}
-            letter={letter}
-            userAnswer={userAnswer}
+            score={visualScore}
+            letter={randomizedAlphabet.current[alphabetIndex.current]}
+            userAnswer={userAnswer.current}
             onClick={changeGamePhase}
           />
         );
       case GamePhases.REPORT_CARD:
         return (
           <ReportCardPhase
-            userPoints={points}
+            userPoints={userPoints.current}
             maxPoints={getAlphabetSize()}
             onClick={changeGamePhase}
           />

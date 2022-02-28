@@ -1,4 +1,4 @@
-import styles from "./Phases.module.css";
+import styles from "./Style.module.css";
 
 function Question({ letter }) {
   return <p className={styles.heroText}>{letter}</p>;

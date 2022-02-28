@@ -1,15 +1,16 @@
 import { useState } from "react";
 import Scoreboard from "./Scoreboard";
 import Question from "./Question";
-import styles from "./Phases.module.css";
+import styles from "./Style.module.css";
 
-function QuestionAnswerPhase({ score, letter, changeGamePhase, submitAnswer }) {
+function QuestionAnswerPhase({ score, letter, submitAnswer }) {
   const [textInput, setTextInput] = useState("");
 
-  function handleClick() {
+  function handleClick(event) {
+    event.preventDefault();
+
     submitAnswer(textInput);
     setTextInput("");
-    changeGamePhase();
   }
 
   return (
@@ -19,10 +20,10 @@ function QuestionAnswerPhase({ score, letter, changeGamePhase, submitAnswer }) {
       <section className={styles.UserSectionContainer}>
         <p>Type in the telephony</p>
         <input
-          id="answer"
           type="text"
           value={textInput}
           onChange={(e) => setTextInput(e.target.value)}
+          autoFocus={true}
         />
         <button onClick={handleClick}>Check Answer</button>
       </section>
