@@ -50,8 +50,8 @@ const mockAlphabet = new Map([
 ]);
 
 function getRandomizedAlphabet() {
-  // let randomizedAlphabet = Array.from(mockAlphabet.keys());
-  let randomizedAlphabet = Array.from(getTheAlphabet());
+  let randomizedAlphabet = Array.from(mockAlphabet.keys());
+  // let randomizedAlphabet = Array.from(getTheAlphabet());
   shuffleArray(randomizedAlphabet);
   return randomizedAlphabet;
 }

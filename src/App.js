@@ -20,6 +20,7 @@ function NatoGame() {
   const alphabetIndex = useRef(0);
   const userAnswer = useRef("");
   const userPoints = useRef(0);
+  const lettersOfWrongAnswers = useRef([]);
 
   // Initialize the visual score board
   useEffect(() => {
@@ -50,6 +51,7 @@ function NatoGame() {
       userPoints.current = userPoints.current + 1;
       currentScore[alphabetIndex.current] = ResultIcons.CORRECT;
     } else {
+      lettersOfWrongAnswers.current.push(currentLetter);
       currentScore[alphabetIndex.current] = ResultIcons.INCORRECT;
     }
     setVisualScore(currentScore);
@@ -103,6 +105,8 @@ function NatoGame() {
       case GamePhases.REPORT_CARD:
         return (
           <ReportCardPhase
+            wrongAnswers={lettersOfWrongAnswers.current}
+            score={visualScore}
             userPoints={userPoints.current}
             maxPoints={getAlphabetSize()}
             onClick={changeGamePhase}
