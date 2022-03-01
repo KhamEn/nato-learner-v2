@@ -18,7 +18,7 @@ function QuestionAnswerPhase({ score, letter, submitAnswer }) {
       <Scoreboard score={score} />
       <Question letter={letter} />
       <section className={styles.UserSectionContainer}>
-        <p>Type in the telephony</p>
+        <p className={styles.questionText}>What is the telephony?</p>
         <input
           type="text"
           value={textInput}

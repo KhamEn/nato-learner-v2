@@ -1,8 +1,13 @@
 @value textColor, backgroundColor, brandColor, formControlBGColor from "../app.css";
 
 .formContainer {
-  width: 80%;
+  width: 98%;
+  height: 80vh;
   max-width: 1150px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   text-align: center;
 
@@ -18,25 +23,37 @@
 .UserSectionContainer {
 }
 
+.UserSectionContainer :nth-child(1) {
+  color: var(--accent-color);
+  font-weight: lighter;
+}
+
 .UserSectionContainer :nth-child(2) {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  font-size: 1.3rem;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 input {
   width: 100%;
 
-  font-size: inherit;
-  color: brandColor;
+  color: var(--text-color);
 
-  background-color: formControlBGColor;
+  background-color: var(--nato-light-blue);
+  opacity: 0.5;
+  /*background-color: rgba(92, 136, 218, 0.3);*/
   border: none;
-  border-bottom: textColor 2px solid;
+  border-bottom: var(--text-color) 3px solid;
 }
 
 input:focus {
   outline: none;
-  border-bottom: brandColor 2px solid;
+  opacity: 1;
+  /*background-color: rgba(92, 136, 218, 1);*/
+  /*border-bottom-color: var(--text-color);*/
 }
 
 button {
@@ -45,43 +62,47 @@ button {
   height: 2rem;
 
   font-size: inherit;
-  color: inherit;
+  font-weight: bold;
+  color: var(--nato-light-blue);
 
-  background-color: formControlBGColor;
-  border: none;
-  border-radius: 15px;
+  background-color: var(--text-color);
+  border: 1px solid var(--nato-light-blue);
+  border-radius: 10px;
 }
 
 button:hover {
-  color: formControlBGColor;
+  color: var(--text-color);
 
-  background-color: brandColor;
+  background-color: var(--nato-light-blue);
+  border-color: var(--text-color);
 }
 
 .heroText {
-  font-size: 15rem;
+  font-size: 30vw;
   font-weight: bold;
 }
 
 .Scoreboard {
-  /*display: flex;*/
-  /*flex-wrap: wrap;*/
-  /*justify-content: space-between;*/
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   justify-items: center;
 
   padding-bottom: 10px;
-  border-bottom: 1px dashed lightgray;
+  border-bottom: 1px dashed var(--accent-color);
 }
 
 /* I chose 520px from manually checking how the scoreboard looks in different sizes */
 @media (min-width: 520px) {
   .heroText {
-    font-size: 20rem;
+    font-size: 13rem;
   }
 
   .Scoreboard {
     grid-template-columns: repeat(13, 1fr);
   }
+}
+
+/* Utils */
+.utilsUnderline {
+  text-decoration: underline;
 }

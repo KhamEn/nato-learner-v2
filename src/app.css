@@ -1,20 +1,27 @@
-@value textColor: black;
-@value backgroundColor: whitesmoke;
-@value brandColor: seagreen;
-@value formControlBGColor: white;
+:root {
+  --text-color: white;
+  --accent-color: lightgray;
+  --nato-light-blue: #5c88da;
+  --nato-dark-blue: #012169;
+}
 
 html,
 body {
   font-family: "Manrope", sans-serif;
   font-size: 22px;
-  color: black;
+  color: var(--text-color);
 
-  background-color: whitesmoke;
+  background-color: var(--nato-light-blue);
+  background-image: linear-gradient(
+    var(--nato-light-blue),
+    var(--nato-dark-blue)
+  );
 }
 
 .container {
   display: grid;
   place-items: center;
+
   height: 100vh;
   width: 100vw;
 }

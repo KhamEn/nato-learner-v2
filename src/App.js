@@ -41,13 +41,14 @@ function NatoGame() {
     newScore[0] = ResultIcons.ACTIVE;
     setVisualScore(newScore);
     userPoints.current = 0;
+    lettersOfWrongAnswers.current = [];
   }
 
   function submitUserAnswer(answer) {
     userAnswer.current = answer;
     let currentScore = visualScore;
     let currentLetter = randomizedAlphabet.current[alphabetIndex.current];
-    if (answer === getTelephony(currentLetter)) {
+    if (answer.toLowerCase() === getTelephony(currentLetter).toLowerCase()) {
       userPoints.current = userPoints.current + 1;
       currentScore[alphabetIndex.current] = ResultIcons.CORRECT;
     } else {
