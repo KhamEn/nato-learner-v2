@@ -18,8 +18,11 @@ function QuestionAnswerPhase({ score, letter, submitAnswer }) {
       <Scoreboard score={score} />
       <Question letter={letter} />
       <section className={styles.UserSectionContainer}>
-        <p className={styles.questionText}>What is the telephony?</p>
+        <label htmlFor="userInput" className={styles.questionText}>
+          What is the telephony?
+        </label>
         <input
+          id="userInput"
           type="text"
           value={textInput}
           onChange={(e) => setTextInput(e.target.value)}
