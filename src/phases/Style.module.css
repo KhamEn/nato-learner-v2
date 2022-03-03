@@ -9,6 +9,11 @@
   padding: 10px;
   border: none;
   border-radius: 15px;
+  background-color: var(--nato-light-blue);
+  background-image: linear-gradient(
+    var(--nato-light-blue),
+    var(--nato-dark-blue)
+  );
 }
 
 .formContainer > :nth-child(2) {
