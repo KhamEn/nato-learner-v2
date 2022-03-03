@@ -14,20 +14,22 @@ function QuestionAnswerPhase({ score, letter, submitAnswer }) {
   }
 
   return (
-    <form className={`${styles.formContainer} ${styles.elevated}`}>
+    <form className={`${styles.formContainer} ${styles.utilsElevated}`}>
       <Scoreboard score={score} />
       <Question letter={letter} />
       <section className={styles.UserSectionContainer}>
-        <label htmlFor="userInput" className={styles.questionText}>
-          What is the telephony?
-        </label>
-        <input
-          id="userInput"
-          type="text"
-          value={textInput}
-          onChange={(e) => setTextInput(e.target.value)}
-          autoFocus={true}
-        />
+        <div>
+          <label htmlFor="userInput">What is the telephony?</label>
+        </div>
+        <div>
+          <input
+            id="userInput"
+            type="text"
+            value={textInput}
+            onChange={(e) => setTextInput(e.target.value)}
+            autoFocus={true}
+          />
+        </div>
         <button onClick={handleClick}>Check Answer</button>
       </section>
     </form>

@@ -1,7 +1,7 @@
 import styles from "./Style.module.css";
 
 function Question({ letter }) {
-  return <p className={styles.heroText}>{letter}</p>;
+  return <p className={styles.utilsHeroText}>{letter}</p>;
 }
 
 export default Question;

@@ -1,66 +1,67 @@
-@value textColor, backgroundColor, brandColor, formControlBGColor from "../app.css";
-
 .formContainer {
-  width: 98%;
   height: 80vh;
+  width: 98%;
   max-width: 1150px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  text-align: center;
+  display: grid;
+  grid-template-rows: 1fr 7fr 2fr;
 
   padding: 10px;
   border: none;
   border-radius: 15px;
 }
 
-.elevated {
-  box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.5);
+.formContainer > :nth-child(2) {
+  place-self: center;
+}
+
+.Scoreboard {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  justify-items: center;
+
+  border-bottom: 1px dashed var(--accent-color);
+  padding-bottom: 5px;
 }
 
 .UserSectionContainer {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
 }
 
-.UserSectionContainer :nth-child(1) {
+.UserSectionContainer > :nth-child(1) {
   color: var(--accent-color);
+  font-size: 0.8rem;
   font-weight: lighter;
+  align-self: end;
 }
 
-.UserSectionContainer :nth-child(2) {
-  font-size: 1.3rem;
-
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+.UserSectionContainer > :nth-child(2) {
+  color: var(--text-color);
 }
 
 input {
   width: 100%;
 
+  font-size: inherit;
   color: var(--text-color);
 
   background-color: var(--nato-light-blue);
-  opacity: 0.5;
-  /*background-color: rgba(92, 136, 218, 0.3);*/
   border: none;
-  border-bottom: var(--text-color) 3px solid;
+  border-bottom: var(--text-color) 2px solid;
+  opacity: 0.5;
 }
 
 input:focus {
   outline: none;
   opacity: 1;
-  /*background-color: rgba(92, 136, 218, 1);*/
-  /*border-bottom-color: var(--text-color);*/
 }
 
 button {
-  display: block;
   width: 100%;
-  height: 2rem;
+  height: 100%;
 
+  text-transform: uppercase;
   font-size: inherit;
   font-weight: bold;
   color: var(--nato-light-blue);
@@ -77,32 +78,31 @@ button:hover {
   border-color: var(--text-color);
 }
 
-.heroText {
-  font-size: 30vw;
+/* Utils */
+.utilsHeroText {
+  font-size: 33vw;
   font-weight: bold;
 }
 
-.Scoreboard {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  justify-items: center;
+.utilsElevated {
+  box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.5);
+}
 
-  padding-bottom: 10px;
-  border-bottom: 1px dashed var(--accent-color);
+.utilsUnderline {
+  text-decoration: underline;
 }
 
 /* I chose 520px from manually checking how the scoreboard looks in different sizes */
 @media (min-width: 520px) {
-  .heroText {
-    font-size: 13rem;
+  .formContainer {
+    padding: 20px;
   }
 
   .Scoreboard {
     grid-template-columns: repeat(13, 1fr);
   }
-}
 
-/* Utils */
-.utilsUnderline {
-  text-decoration: underline;
+  .UserSectionContainer :nth-child(2) {
+    font-size: 1.3rem;
+  }
 }

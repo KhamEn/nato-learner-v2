@@ -7,18 +7,22 @@ function ReportCardPhase({ score, wrongAnswers, userPoints, onClick }) {
   wrongAnswers.sort();
 
   return (
-    <div className={`${styles.formContainer} ${styles.elevated}`}>
+    <div className={`${styles.formContainer} ${styles.utilsElevated}`}>
       <Scoreboard score={score} />
-      <p className={styles.heroText}>
+      <p className={styles.utilsHeroText}>
         {Math.round((userPoints / MAX_POINTS) * 100)}%
       </p>
-      <div className={styles.UserSectionContainer}>
-        <p className={styles.utilsUnderline}>
-          {wrongAnswers.length} wrong answers
-        </p>
-        <p>{wrongAnswers}</p>
+      <section className={styles.UserSectionContainer}>
+        <div>
+          <p className={styles.utilsUnderline}>
+            {wrongAnswers.length} wrong answers
+          </p>
+        </div>
+        <div>
+          <p>{wrongAnswers}</p>
+        </div>
         <button onClick={onClick}>New Quiz</button>
-      </div>
+      </section>
     </div>
   );
 }
