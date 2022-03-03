@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/nato-learner-v2/static/css/main.60fa3bac.css",
-    "main.js": "/nato-learner-v2/static/js/main.d718e8b6.js",
+    "main.css": "/nato-learner-v2/static/css/main.838558f6.css",
+    "main.js": "/nato-learner-v2/static/js/main.974d090c.js",
     "index.html": "/nato-learner-v2/index.html",
-    "main.60fa3bac.css.map": "/nato-learner-v2/static/css/main.60fa3bac.css.map",
-    "main.d718e8b6.js.map": "/nato-learner-v2/static/js/main.d718e8b6.js.map"
+    "main.838558f6.css.map": "/nato-learner-v2/static/css/main.838558f6.css.map",
+    "main.974d090c.js.map": "/nato-learner-v2/static/js/main.974d090c.js.map"
   },
   "entrypoints": [
-    "static/css/main.60fa3bac.css",
-    "static/js/main.d718e8b6.js"
+    "static/css/main.838558f6.css",
+    "static/js/main.974d090c.js"
   ]
 }
