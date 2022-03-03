@@ -12,17 +12,15 @@ function ReportCardPhase({ score, wrongAnswers, userPoints, onClick }) {
       <p className={styles.utilsHeroText}>
         {Math.round((userPoints / MAX_POINTS) * 100)}%
       </p>
-      <section className={styles.UserSectionContainer}>
-        <div>
-          <p className={styles.utilsUnderline}>
-            {wrongAnswers.length} wrong answers
-          </p>
-        </div>
-        <div>
-          <p>{wrongAnswers}</p>
-        </div>
-        <button onClick={onClick}>New Quiz</button>
-      </section>
+      <div>
+        <p className={styles.utilsUnderline}>
+          {wrongAnswers.length} wrong answers
+        </p>
+      </div>
+      <div>
+        <p>{wrongAnswers}</p>
+      </div>
+      <button onClick={onClick}>New Quiz</button>
     </div>
   );
 }

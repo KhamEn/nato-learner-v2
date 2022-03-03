@@ -1,10 +1,10 @@
 .formContainer {
-  height: 80vh;
+  height: 80%;
   width: 97%;
   max-width: 1150px;
 
   display: grid;
-  grid-template-rows: 1fr 7fr 2fr;
+  grid-template-rows: auto 1fr auto auto auto;
 
   padding: 10px;
   border: none;
@@ -16,33 +16,27 @@
   );
 }
 
-.formContainer > :nth-child(2) {
-  place-self: center;
-}
-
 .Scoreboard {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   justify-items: center;
 
   border-bottom: 1px dashed var(--accent-color);
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
-.UserSectionContainer {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+.formContainer > :nth-child(2) {
+  place-self: center;
 }
 
-.UserSectionContainer > :nth-child(1) {
+.formContainer > :nth-child(3) {
   color: var(--accent-color);
   font-size: 0.8rem;
   font-weight: lighter;
-  align-self: end;
 }
 
-.UserSectionContainer > :nth-child(2) {
-  color: var(--text-color);
+.formContainer > :nth-child(4) {
+  margin-bottom: 8px;
 }
 
 input {
@@ -53,7 +47,7 @@ input {
 
   background-color: var(--nato-light-blue);
   border: none;
-  border-bottom: var(--text-color) 2px solid;
+  border-bottom: var(--text-color) 1px solid;
   opacity: 0.5;
 }
 
@@ -63,8 +57,7 @@ input:focus {
 }
 
 button {
-  width: 100%;
-  height: 100%;
+  height: 2rem;
 
   text-transform: uppercase;
   font-size: inherit;
@@ -99,16 +92,27 @@ button:hover {
 
 /* I chose 520px from manually checking how the scoreboard looks in different sizes */
 @media (min-width: 520px) {
+  html,
+  body {
+    font-size: 24px;
+  }
+
   .formContainer {
     padding: 20px;
   }
 
   .Scoreboard {
     grid-template-columns: repeat(13, 1fr);
+    padding-bottom: 20px;
   }
 
-  .UserSectionContainer :nth-child(2) {
-    font-size: 1.3rem;
+  .formContainer > :nth-child(3) {
+    font-size: 1rem;
+  }
+
+  .formContainer > :nth-child(4) {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
   }
 }
 

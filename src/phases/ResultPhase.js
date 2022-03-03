@@ -16,28 +16,25 @@ function ResultPhase({ score, letter, userAnswer, onClick }) {
     <form className={`${styles.formContainer} ${styles.utilsElevated}`}>
       <Scoreboard score={score} />
       <Question letter={letter} />
-      <section className={styles.UserSectionContainer}>
-        <div>
-          {" "}
-          <p className={styles.utilsUnderline}>{getTelephony(letter)}</p>
-        </div>
-        <div>
-          <p>
-            {userAnswer.toLowerCase() === getTelephony(letter).toLowerCase()
-              ? ResultIcons.CORRECT
-              : ResultIcons.INCORRECT}
-            {userAnswer}
-          </p>
-        </div>
-
-        <button
-          onClick={onClick}
-          onKeyDown={(e) => handleKeyDown(e)}
-          autoFocus={true}
-        >
-          Next Question
-        </button>
-      </section>
+      <div>
+        {" "}
+        <p className={styles.utilsUnderline}>{getTelephony(letter)}</p>
+      </div>
+      <div>
+        <p>
+          {userAnswer.toLowerCase() === getTelephony(letter).toLowerCase()
+            ? ResultIcons.CORRECT
+            : ResultIcons.INCORRECT}
+          {userAnswer}
+        </p>
+      </div>
+      <button
+        onClick={onClick}
+        onKeyDown={(e) => handleKeyDown(e)}
+        autoFocus={true}
+      >
+        Next Question
+      </button>
     </form>
   );
 }
