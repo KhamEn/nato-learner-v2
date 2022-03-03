@@ -10,8 +10,7 @@ function ReportCardPhase({ score, wrongAnswers, userPoints, onClick }) {
     <div className={`${styles.formContainer} ${styles.utilsElevated}`}>
       <Scoreboard score={score} />
       <p className={styles.utilsHeroText}>
-        100%
-        {/*{Math.round((userPoints / MAX_POINTS) * 100)}%*/}
+        {Math.round((userPoints / MAX_POINTS) * 100)}%
       </p>
       <section className={styles.UserSectionContainer}>
         <div>
