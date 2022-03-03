@@ -1,6 +1,6 @@
 .formContainer {
   height: 80vh;
-  width: 98%;
+  width: 97%;
   max-width: 1150px;
 
   display: grid;
@@ -104,5 +104,13 @@ button:hover {
 
   .UserSectionContainer :nth-child(2) {
     font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 1150px) {
+  /*  At 33vw font-size, the letter becomes so big that it pushes other elements away
+        and breaks the layout    */
+  .utilsHeroText {
+    font-size: 18rem;
   }
 }
